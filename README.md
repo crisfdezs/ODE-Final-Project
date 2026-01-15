@@ -136,29 +136,7 @@ ODE-Final-Project/
 - **simulations.py**: Defines scenario parameters (R, g values) and initial conditions
 - **plots.py**: Creates line plots of market share evolution over time
 - **run_scenarios.py**: CLI interface for running simulations and exporting results
-
----
-
-## Running Tests
-
-```bash
-# Install pytest if not already installed
-pip install pytest
-
-# Run all tests
-pytest tests/
-
-# Run with verbose output
-pytest tests/ -v
-
-# Run specific test file
-pytest tests/test_model.py
-
-# Run with coverage report
-pip install pytest-cov
-pytest tests/ --cov=. --cov-report=html
-```
-
+- 
 ---
 ## Example Output
 
