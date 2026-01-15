@@ -1,9 +1,9 @@
-from src.simulations import (
+from simulations import (
     baseline_scenario,
     renewable_policy_scenario,
     nuclear_phaseout_scenario
 )
-from src.plots import plot_energy_mix
+from plots import plot_energy_mix
 
 """
 Run and visualize energy transition scenarios using replicator dynamics.
