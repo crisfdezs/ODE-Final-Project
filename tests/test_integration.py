@@ -6,6 +6,10 @@ import numpy as np
 import pytest
 from pathlib import Path
 import tempfile
+import sys
+
+# Add the 'src' folder to Python's module search path
+sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
 from simulations import baseline_scenario, renewable_policy_scenario, nuclear_phaseout_scenario
 from main import main, save_results_to_csv, run_scenario
