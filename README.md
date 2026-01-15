@@ -9,23 +9,22 @@ The model tracks the share of five electricity generation technologies: **Fossil
 
 ## Repository Structure
 
+```text
 ODE-Final-Project/
 ├── src/
-│ ├── init.py
-│ ├── model.py # Defines the ODE right-hand side (replicator_rhs)
-│ ├── solver.py # Implements RK4 integrator with normalization
-│ ├── simulations.py # Functions for different scenarios:
-│ │ # baseline_scenario(), renewable_policy_scenario(), nuclear_phaseout_scenario()
-│ └── plots.py # Utilities for plotting energy shares
+│   ├── __init__.py           # Marks the folder as a Python package
+│   ├── model.py              # Defines the ODE right-hand side (replicator_rhs)
+│   ├── solver.py             # Implements RK4 integrator with normalization
+│   ├── simulations.py        # Functions for different scenarios:
+│   │                            # baseline_scenario(), renewable_policy_scenario(), nuclear_phaseout_scenario()
+│   └── plots.py              # Utilities for plotting energy shares
 ├── examples/
-│ └── run_scenarios.py # Script that runs all scenarios and generates plots
+│   └── run_scenarios.py      # Script that runs all scenarios and generates plots
 ├── report/
-│ └── references.txt # References and supporting material for the report
+│   └── references.txt        # References and supporting material for the report
 ├── README.md
 └── requirements.txt
-
-
----
+```
 
 ## Scenarios Implemented
 
@@ -52,7 +51,7 @@ Install dependencies with:
 
 ```bash
 pip install -r requirements.txt
-
+```
 ---
 
 ## Usage
