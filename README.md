@@ -110,7 +110,6 @@ python examples.run_scenarios.py --help
 ```text
 ODE-Final-Project/
 ├── src/
-│   ├── __init__.py           # Marks the folder as a Python package
 │   ├── model.py              # Defines the ODE right-hand side (replicator_rhs)
 │   ├── solver.py             # Implements RK4 integrator with normalization
 │   ├── simulations.py        # Functions for different scenarios:
