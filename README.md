@@ -149,7 +149,7 @@ def my_custom_scenario(t0=0.0, t_end=100.0, dt=0.1):
         "R": np.array([...]),  # Resource efficiency
         "g": np.array([...])   # Growth rates
     }
-    return integrate(replicator_rhs, X0_SPAIN, t0, t_end, dt, params)
+    return integrate(replicator_rhs, x0_spain, t0, t_end, dt, params)
 ```
 ---
 
