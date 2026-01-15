@@ -1,3 +1,5 @@
+import numpy as np
+
 def rk4_step(f, t, x, dt, params):
     """
     Perform a single Runge-Kutta 4th order (RK4) step for a system of ODEs.
