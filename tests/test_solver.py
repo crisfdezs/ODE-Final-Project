@@ -4,6 +4,11 @@ Unit tests for the ODE solver.
 
 import numpy as np
 import pytest
+import sys
+from pathlib import Path
+
+# Add the 'src' folder to Python's module search path
+sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
 from solver import rk4_step, integrate, validate_inputs
 
