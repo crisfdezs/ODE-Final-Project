@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 def plot_energy_mix(t, x, title):
-     """
+    """
     Plot the evolution of energy source shares over time.
 
     This function generates a line plot showing the fraction of electricity 
