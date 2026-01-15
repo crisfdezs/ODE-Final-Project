@@ -78,21 +78,21 @@ python examples.run_scenarios.py
 
 ```bash
 # Run a specific scenario
-python main.py --scenario baseline
-python main.py --scenario renewable
-python main.py --scenario nuclear_phaseout
+python examples.run_scenarios.py --scenario baseline
+python examples.run_scenarios.py --scenario renewable
+python examples.run_scenarios.py --scenario nuclear_phaseout
 
 # Save outputs to files
-python main.py --save-plots --save-csv --output-dir results
+python examples.run_scenarios.py --save-plots --save-csv --output-dir results
 
 # Customize simulation parameters
-python main.py --t-end 50 --dt 0.05
+python examples.run_scenarios.py --t-end 50 --dt 0.05
 
 # Non-interactive mode (for scripts)
-python main.py --no-show --save-csv
+python examples.run_scenarios.py --no-show --save-csv
 
 # View all options
-python main.py --help
+python examples.run_scenarios.py --help
 ```
 
 ### Available Scenarios
