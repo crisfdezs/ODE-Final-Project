@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Add the 'src' folder to Python's module search path
+sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
+
 from simulations import (
     baseline_scenario,
     renewable_policy_scenario,
