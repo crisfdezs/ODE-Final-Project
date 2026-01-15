@@ -119,11 +119,6 @@ ODE-Final-Project/
 │   └── plots.py              # Utilities for plotting energy shares
 ├── examples/
 │   └── run_scenarios.py      # Script that runs all scenarios and generates plots
-├── tests/           # Unit and integration tests
-│   ├── test_model.py
-│   ├── test_solver.py
-│   ├── test_simulations.py
-│   └── test_integration.py
 ├── README.md
 └── requirements.txt
 ```
