@@ -48,13 +48,13 @@ where:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ODE-Final-Project.git
+   git clone https://github.com/crisfdezs/ODE-Final-Project.git
    cd ODE-Final-Project
    ```
 
 2. Create a virtual environment (recommended):
    ```bash
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
@@ -71,28 +71,30 @@ where:
 
 Run all scenarios with interactive plots:
 ```bash
-python examples.run_scenarios.py
+cd examples
+python3 run_scenarios.py
 ```
 
 ### Command-Line Options
 
 ```bash
+cd examples
 # Run a specific scenario
-python examples.run_scenarios.py --scenario baseline
-python examples.run_scenarios.py --scenario renewable
-python examples.run_scenarios.py --scenario nuclear_phaseout
+python3 run_scenarios.py --scenario baseline
+python3 run_scenarios.py --scenario renewable
+python3 run_scenarios.py --scenario nuclear_phaseout
 
 # Save outputs to files
-python examples.run_scenarios.py --save-plots --save-csv --output-dir results
+python3 run_scenarios.py --save-plots --save-csv --output-dir results
 
 # Customize simulation parameters
-python examples.run_scenarios.py --t-end 50 --dt 0.05
+python3 run_scenarios.py --t-end 50 --dt 0.05
 
 # Non-interactive mode (for scripts)
-python examples.run_scenarios.py --no-show --save-csv
+python3 run_scenarios.py --no-show --save-csv
 
 # View all options
-python examples.run_scenarios.py --help
+python3 run_scenarios.py --help
 ```
 
 ### Available Scenarios
