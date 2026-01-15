@@ -20,8 +20,6 @@ ODE-Final-Project/
 │   └── plots.py              # Utilities for plotting energy shares
 ├── examples/
 │   └── run_scenarios.py      # Script that runs all scenarios and generates plots
-├── report/
-│   └── references.txt        # References and supporting material for the report
 ├── README.md
 └── requirements.txt
 ```
