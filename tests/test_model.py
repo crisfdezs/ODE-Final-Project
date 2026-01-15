@@ -4,6 +4,11 @@ Unit tests for the replicator dynamics model.
 
 import numpy as np
 import pytest
+import sys
+from pathlib import Path
+
+# Add the 'src' folder to Python's module search path
+sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
 from model import replicator_rhs
 
