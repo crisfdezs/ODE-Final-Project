@@ -133,7 +133,7 @@ ODE-Final-Project/
 - **solver.py**: Fourth-order Runge-Kutta (RK4) integrator with normalization enforcement
 - **simulations.py**: Defines scenario parameters (R, g values) and initial conditions
 - **plots.py**: Creates line plots of market share evolution over time
-- **main.py**: CLI interface for running simulations and exporting results
+- **run_scenarios.py**: CLI interface for running simulations and exporting results
 
 ---
 
