@@ -75,28 +75,6 @@ cd examples
 python3 run_scenarios.py
 ```
 
-### Command-Line Options
-
-```bash
-cd examples
-# Run a specific scenario
-python3 run_scenarios.py --scenario baseline
-python3 run_scenarios.py --scenario renewable
-python3 run_scenarios.py --scenario nuclear_phaseout
-
-# Save outputs to files
-python3 run_scenarios.py --save-plots --save-csv --output-dir results
-
-# Customize simulation parameters
-python3 run_scenarios.py --t-end 50 --dt 0.05
-
-# Non-interactive mode (for scripts)
-python3 run_scenarios.py --no-show --save-csv
-
-# View all options
-python3 run_scenarios.py --help
-```
-
 ### Available Scenarios
 
 | Scenario | Description |
