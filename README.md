@@ -1,9 +1,107 @@
-# Modelling the Dynamics of Spain’s Electricity Generation Mix
+# ODE-based Modelling of Spain's Electricity Generation Mix
 
-This repository contains the Python code supporting the **final project for the course "Introduction to Ordinary Differential Equations" (Fall 2025)**.  
-The project studies the **long-term evolution of Spain’s electricity generation mix** using a simplified system of ordinary differential equations (ODEs) based on **replicator dynamics**.
+This project simulates the long-term evolution of Spain's electricity generation mix using a system of ordinary differential equations (ODEs) based on **replicator dynamics** from evolutionary game theory.
 
-The model tracks the share of five electricity generation technologies: **Fossil fuels, Nuclear, Wind, Solar, and Hydroelectric power**. Each technology’s share evolves over time as a function of its payoff and growth rate, under the constraint of a fixed total electricity generation.
+The model captures how five energy technologies—fossil fuels, nuclear, wind, solar, and hydroelectric—compete for market share over a time horizon under different policy scenarios.
+
+---
+
+## Mathematical Model
+
+### Replicator Dynamics
+
+The evolution of market shares is governed by the replicator equation:
+
+```
+dx_i/dt = x_i * (f_i - φ)
+```
+
+where:
+- `x_i` is the market share of technology `i` (0 ≤ x_i ≤ 1, Σx_i = 1)
+- `f_i = R_i * g_i` is the "fitness" of technology `i`
+- `φ = Σ x_j * f_j` is the average fitness across all technologies
+- `R_i` is the resource efficiency factor (infrastructure maturity, grid integration)
+- `g_i` is the intrinsic growth rate (investment, policy support, cost trends)
+
+**Key insight**: Technologies with above-average fitness (`f_i > φ`) grow, while those below average decline. This creates a competitive dynamic where the "fittest" technologies gradually dominate.
+
+### Parameters
+
+| Index | Technology | R (Efficiency) | g (Baseline Growth) | Notes |
+|-------|------------|----------------|---------------------|-------|
+| 0 | Fossil | 1.0 | 0.02 | Mature infrastructure |
+| 1 | Nuclear | 1.0 | 0.015 | High upfront costs |
+| 2 | Wind | 0.9 | 0.03 | Growing rapidly |
+| 3 | Solar | 0.9 | 0.035 | Fastest cost decline |
+| 4 | Hydro | 0.6 | 0.01 | Geographically limited |
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Python 3.9 or higher
+- pip (Python package manager)
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ODE-Final-Project.git
+   cd ODE-Final-Project
+   ```
+
+2. Create a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Usage
+
+### Basic Usage
+
+Run all scenarios with interactive plots:
+```bash
+python examples.run_scenarios.py
+```
+
+### Command-Line Options
+
+```bash
+# Run a specific scenario
+python main.py --scenario baseline
+python main.py --scenario renewable
+python main.py --scenario nuclear_phaseout
+
+# Save outputs to files
+python main.py --save-plots --save-csv --output-dir results
+
+# Customize simulation parameters
+python main.py --t-end 50 --dt 0.05
+
+# Non-interactive mode (for scripts)
+python main.py --no-show --save-csv
+
+# View all options
+python main.py --help
+```
+
+### Available Scenarios
+
+| Scenario | Description |
+|----------|-------------|
+| `baseline` | Business-as-usual: current trends continue |
+| `renewable` | Strong renewable support: enhanced wind/solar growth rates |
+| `nuclear_phaseout` | Nuclear phase-out: negative nuclear growth after year 40 |
 
 ---
 
@@ -20,45 +118,108 @@ ODE-Final-Project/
 │   └── plots.py              # Utilities for plotting energy shares
 ├── examples/
 │   └── run_scenarios.py      # Script that runs all scenarios and generates plots
+├── tests/           # Unit and integration tests
+│   ├── test_model.py
+│   ├── test_solver.py
+│   ├── test_simulations.py
+│   └── test_integration.py
 ├── README.md
 └── requirements.txt
 ```
+---
 
-## Scenarios Implemented
+### Module Descriptions
 
-1. **Baseline scenario**  
-   Current energy mix with constant growth rates, representing the status quo.
-
-2. **Renewable support scenario**  
-   Models policies favoring renewable energy, increasing growth rates for wind and solar.
-
-3. **Nuclear phase-out scenario**  
-   Models a policy shock reducing nuclear energy growth after a given time, simulating a gradual phase-out.
-
-Each scenario is computed using the `integrate` function from `solver.py` and visualized with `plot_energy_mix`.
+- **model.py**: Implements the replicator dynamics equation `dx/dt = x * (f - φ)`
+- **solver.py**: Fourth-order Runge-Kutta (RK4) integrator with normalization enforcement
+- **simulations.py**: Defines scenario parameters (R, g values) and initial conditions
+- **plots.py**: Creates line plots of market share evolution over time
+- **main.py**: CLI interface for running simulations and exporting results
 
 ---
 
-## Dependencies
-
-- Python 3.x  
-- `numpy`  
-- `matplotlib`
-
-Install dependencies with:
+## Running Tests
 
 ```bash
-pip install -r requirements.txt
+# Install pytest if not already installed
+pip install pytest
+
+# Run all tests
+pytest tests/
+
+# Run with verbose output
+pytest tests/ -v
+
+# Run specific test file
+pytest tests/test_model.py
+
+# Run with coverage report
+pip install pytest-cov
+pytest tests/ --cov=. --cov-report=html
 ```
+
+---
+## Example Output
+
+Running the baseline scenario produces a plot showing:
+- Solar gaining the largest market share over time (highest growth rate)
+- Wind growing steadily
+- Fossil and nuclear declining relatively
+- Hydro remaining stable but small (geographical constraints)
+
+The renewable policy scenario shows accelerated growth of wind and solar, with fossil fuels declining faster due to carbon pricing effects.
+
 ---
 
-## Usage
+## Interpreting Results
 
-To run all scenarios and generate plots:
-```bash
-python -m examples.run_scenarios
-```
+### Market Shares
+- Values represent the fraction of total electricity generation (0.0 to 1.0)
+- All shares sum to 1.0 at every timestep (conservation)
+
+### Limitations
+- Simplified model: does not capture intermittency, storage, or grid constraints
+- Linear fitness function: real-world dynamics may be nonlinear
+- Policy shocks are abrupt: real policies phase in gradually
+- No feedback loops: electricity prices, supply chains, etc. not modeled
+
 ---
+
+## Extending the Model
+
+### Adding New Scenarios
+
+Edit `simulations.py` to add new scenarios:
+
+```python
+def my_custom_scenario(t0=0.0, t_end=100.0, dt=0.1):
+    """My custom energy policy scenario."""
+    params = {
+        "R": np.array([...]),  # Resource efficiency
+        "g": np.array([...])   # Growth rates
+    }
+    return integrate(replicator_rhs, X0_SPAIN, t0, t_end, dt, params)
+
+# Register in SCENARIOS dict
+SCENARIOS["my_custom"] = my_custom_scenario
+```
+
+### Time-Dependent Policies
+
+Create scenarios with policy shocks using callable `g`:
+
+```python
+def g_time(t):
+    if t < 30:
+        return np.array([0.02, 0.015, 0.03, 0.035, 0.01])
+    else:
+        return np.array([0.01, 0.01, 0.05, 0.06, 0.01])
+
+params = {"R": R, "g": g_time}
+```
+
+---
+
 
 ## Notes
 
@@ -74,6 +235,4 @@ The model assumes normalized shares for all energy sources (sum of shares = 1) a
 
 Cristina Fernández-Simal Bernard.
 Final Project – Introduction to Ordinary Differential Equations, Fall 2025.
-
----
 
