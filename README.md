@@ -143,13 +143,13 @@ The renewable policy scenario shows accelerated growth of wind and solar, with f
 Edit `simulations.py` to add new scenarios:
 
 ```python
-def my_custom_scenario(t0=0.0, t_end=100.0, dt=0.1):
+def my_custom_scenario():
     """My custom energy policy scenario."""
     params = {
         "R": np.array([...]),  # Resource efficiency
         "g": np.array([...])   # Growth rates
     }
-    return integrate(replicator_rhs, x0_spain, t0, t_end, dt, params)
+    return integrate(replicator_rhs, x0_spain, 0.0, 100.0, 0.1, params)
 ```
 ---
 
