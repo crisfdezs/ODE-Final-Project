@@ -20,8 +20,8 @@ where:
 - `x_i` is the market share of technology `i` (0 ≤ x_i ≤ 1, Σx_i = 1)
 - `f_i = R_i * g_i` is the "fitness" of technology `i`
 - `φ = Σ x_j * f_j` is the average fitness across all technologies
-- `R_i` is the resource efficiency factor (infrastructure maturity, grid integration)
-- `g_i` is the intrinsic growth rate (investment, policy support, cost trends)
+- `R_i` is the resource efficiency factor
+- `g_i` is the intrinsic growth rate
 
 **Key insight**: Technologies with above-average fitness (`f_i > φ`) grow, while those below average decline. This creates a competitive dynamic where the "fittest" technologies gradually dominate.
 
