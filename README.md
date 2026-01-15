@@ -150,27 +150,8 @@ def my_custom_scenario(t0=0.0, t_end=100.0, dt=0.1):
         "g": np.array([...])   # Growth rates
     }
     return integrate(replicator_rhs, X0_SPAIN, t0, t_end, dt, params)
-
-# Register in SCENARIOS dict
-SCENARIOS["my_custom"] = my_custom_scenario
 ```
-
-### Time-Dependent Policies
-
-Create scenarios with policy shocks using callable `g`:
-
-```python
-def g_time(t):
-    if t < 30:
-        return np.array([0.02, 0.015, 0.03, 0.035, 0.01])
-    else:
-        return np.array([0.01, 0.01, 0.05, 0.06, 0.01])
-
-params = {"R": R, "g": g_time}
-```
-
 ---
-
 
 ## Notes
 
