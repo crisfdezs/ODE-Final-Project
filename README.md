@@ -57,9 +57,9 @@ pip install -r requirements.txt
 ## Usage
 
 To run all scenarios and generate plots:
-
+```bash
 python -m examples.main
-
+```
 ---
 
 ## Notes
