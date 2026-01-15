@@ -109,7 +109,6 @@ ODE-Final-Project/
 - **simulations.py**: Defines scenario parameters (R, g values) and initial conditions
 - **plots.py**: Creates line plots of market share evolution over time
 - **run_scenarios.py**: CLI interface for running simulations and exporting results
-- 
 ---
 ## Example Output
 
